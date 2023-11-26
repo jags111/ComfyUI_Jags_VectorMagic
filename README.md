@@ -28,7 +28,9 @@ A single file library for easily adding evaluatable expressions into python proj
 check Notes for more information.
 
 ## **Install:**
-To install, drop the "_**ComfyUI_Jags_VectorMagic**_" folder into the "_**...\ComfyUI\ComfyUI\custom_nodes**_" directory and restart UI.
+To install, drop the "_**ComfyUI_Jags_VectorMagic**_" folder into the "_**...\ComfyUI\ComfyUI\custom_nodes**_" directory and restart UI.<br>
+
+But the best method is to install same from ComfyUI Manager (https://github.com/ltdrdata/ComfyUI-Manager) and search for this name in the Node list and install from there and restart the UI as it takes care of all the dependencies and installs and make it easy for you. 
 
 ## Todo
 
