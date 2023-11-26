@@ -1,4 +1,12 @@
-import os, random
+import comfy.diffusers_convert
+import comfy.samplers
+import comfy.sd
+import comfy.utils
+import comfy.clip_vision
+import torch
+import nodes
+from typing import Optional
+import comfy
 
 try:
     import folder_paths
@@ -54,12 +62,13 @@ class xy_Tiling_KSampler:
         pass
 
     @classmethod
+
     def INPUT_TYPES(s):
         return {
             "required": {
                 "model": ("MODEL",),
 
-                "seed": ("SEED", ),
+                "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
                 "steps": ("INT", {"default": 20, "min": 1, "max": 10000}),
                 "cfg": ("FLOAT", {"default": 8.0, "min": 0.0, "max": 100.0}),
                 "sampler_name": (comfy.samplers.KSampler.SAMPLERS, ),
@@ -68,76 +77,60 @@ class xy_Tiling_KSampler:
                 "negative": ("CONDITIONING", ),
                 "latent_image": ("LATENT", ),
                 "denoise": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.01}),
-
-                # here is custom config
-                "step_range": ("INT", {
-                    "startStep": 0,  # Start tiling from step N
-                    "stopStep": -1  # Stop tiling after step N (-1: Don't stop)
-                }),
-                "tileX": (["enable", "disable"],),
-                "tileY": (["enable", "disable"],)
+                "tileX": ("INT", {"default": 1, "min": 0, "max": 2}),
+                "tileY": ("INT", {"default": 1, "min": 0, "max": 2}),
             },
         }
 
-    RETURN_TYPES = ("LATENT",)
-
+    RETURN_TYPES = ("LATENT", "LATENT")
+    RETURN_NAMES = ("latent", "progress_latent")
     FUNCTION = "sample"
 
-    CATEGORY = "Alsritter/Sampling"
+    CATEGORY = "Tiled/Sampling"
 
-    def sample(self, model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image,
-               step_range, tileX, tileY, denoise=1.0):
+    def apply_asymmetric_tiling(self, model, tileX, tileY):
+        for layer in [layer for layer in model.modules() if isinstance(layer, torch.nn.Conv2d)]:
+            layer.padding_modeX = 'circular' if tileX else 'constant'
+            layer.padding_modeY = 'circular' if tileY else 'constant'
+            layer.paddingX = (layer._reversed_padding_repeated_twice[0], layer._reversed_padding_repeated_twice[1], 0, 0)
+            layer.paddingY = (0, 0, layer._reversed_padding_repeated_twice[2], layer._reversed_padding_repeated_twice[3])
+            print(layer.paddingX, layer.paddingY)
 
-        if tileX != "enable" and tileY != "enable":
-            return nodes.common_ksampler(model, seed['seed'], steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=denoise)
-        else:
-            return self.tile_ksampler(model, seed['seed'], steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=denoise)
+    def __hijackConv2DMethods(self, model, tileX: bool, tileY: bool):
+        for layer in [l for l in model.modules() if isinstance(l, torch.nn.Conv2d)]:
+            layer.padding_modeX = 'circular' if tileX else 'constant'
+            layer.padding_modeY = 'circular' if tileY else 'constant'
+            layer.paddingX = (layer._reversed_padding_repeated_twice[0], layer._reversed_padding_repeated_twice[1], 0, 0)
+            layer.paddingY = (0, 0, layer._reversed_padding_repeated_twice[2], layer._reversed_padding_repeated_twice[3])
+            
+            def make_bound_method(method, current_layer):
+                def bound_method(self, *args, **kwargs):  # Add 'self' here
+                    return method(current_layer, *args, **kwargs)
+                return bound_method
+                
+            bound_method = make_bound_method(self.__replacementConv2DConvForward, layer)
+            layer._conv_forward = bound_method.__get__(layer, type(layer))
 
-    # Self-determined 
-    def tile_ksampler(self, model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent, denoise=1.0, disable_noise=False, start_step=None, last_step=None, force_full_denoise=False):
+    def __replacementConv2DConvForward(self, layer, input: torch.Tensor, weight: torch.Tensor, bias: Optional[torch.Tensor]):
+        working = torch.nn.functional.pad(input, layer.paddingX, mode=layer.padding_modeX)
+        working = torch.nn.functional.pad(working, layer.paddingY, mode=layer.padding_modeY)
+        return torch.nn.functional.conv2d(working, weight, bias, layer.stride, (0, 0), layer.dilation, layer.groups)
 
-        # ========================== Base code ==========================
-        device = comfy.model_management.get_torch_device()
-        latent_image = latent["samples"]
-
-        if disable_noise:
-            noise = torch.zeros(latent_image.size(
-            ), dtype=latent_image.dtype, layout=latent_image.layout, device="cpu")
-        else:
-            batch_inds = latent["batch_index"] if "batch_index" in latent else None
-            noise = comfy.sample.prepare_noise(latent_image, seed, batch_inds)
-
-        noise_mask = None
-        if "noise_mask" in latent:
-            noise_mask = latent["noise_mask"]
-
-        preview_format = "JPEG"
-        if preview_format not in ["JPEG", "PNG"]:
-            preview_format = "JPEG"
-
-        previewer = latent_preview.get_previewer(
-            device, model.model.latent_format)
-
-        # Arrangement progress clause
-        pbar = comfy.utils.ProgressBar(steps)
-
-        def callback(step, x0, x, total_steps):
-            preview_bytes = None
-
-            self.print_object_info(step)
-            self.print_object_info(x0)
-            self.print_object_info(x)
-            self.print_object_info(total_steps)
-
-            #Generation guide
-            if previewer:
-                preview_bytes = previewer.decode_latent_to_preview_image(
-                    preview_format, x0)
-            # Update progress clause
-            pbar.update_absolute(step + 1, total_steps, preview_bytes)
+    def __restoreConv2DMethods(self, model):
+        for layer in [l for l in model.modules() if isinstance(l, torch.nn.Conv2d)]:
+            layer._conv_forward = torch.nn.Conv2d._conv_forward.__get__(layer, torch.nn.Conv2d)
+      
+    def sample(self, model, seed, tileX, tileY, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=1.0):
+        self.__hijackConv2DMethods(model.model, tileX == 1, tileY == 1)
+        result = nodes.common_ksampler(model, seed, steps, cfg, sampler_name, scheduler, positive, negative, latent_image, denoise=denoise)
+        self.__restoreConv2DMethods(model.model)
+        return result
 
       # ========================== Custom code ==========================
-
+"""
+    def my_function(model, noise, steps, cfg, sampler_name, scheduler, positive, negative, latent_image,
+                    denoise=denoise, disable_noise=disable_noise, start_step=start_step, last_step=last_step,
+                    force_full_denoise=force_full_denoise, noise_mask=noise_mask, callback=callback, seed=seed):
         samples = comfy.sample.sample(model, noise, steps, cfg, sampler_name, scheduler, positive, negative, latent_image,
                                       denoise=denoise, disable_noise=disable_noise, start_step=start_step, last_step=last_step,
                                       force_full_denoise=force_full_denoise, noise_mask=noise_mask, callback=callback, seed=seed)
@@ -149,6 +142,28 @@ class xy_Tiling_KSampler:
         print("Type:", type(obj))
         print("Attributes and methods:", end=" ")
         for item in dir(obj):
-            print(item, end=" ")
+            print(item, end=" ")/ 
+"""
+
+class CircularVAEDecode:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {"required": { "samples": ("LATENT", ), "vae": ("VAE", )}}
+    RETURN_TYPES = ("IMAGE",)
+    FUNCTION = "decode"
+
+    CATEGORY = "latent"
+
+    def decode(self, vae, samples):
+        for layer in [layer for layer in vae.first_stage_model.modules() if isinstance(layer, torch.nn.Conv2d)]:
+            layer.padding_mode = 'circular'
+        return (vae.decode(samples["samples"]), )
+    
+NODE_CLASS_MAPPINGS = {
+        "xy_Tiling_KSampler": xy_Tiling_KSampler,
+        "CircularVAEDecode": CircularVAEDecode,
+}
+
+    
 
 
