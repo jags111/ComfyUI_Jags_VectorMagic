@@ -17,6 +17,10 @@ Thanks for your support. Also note for any issues on the nodes, kindly share you
 
 <img src = "images/00UP-00_00003_.png"  width = "50%" >
 
+### ComfyUI_Jags_VectorMagic- WIKI
+
+Link to the workflow and explanations : <a href= "https://github.com/jags111/ComfyUI_Jags_VectorMagic/wiki"> **WIKI** </a>
+
 ### Dependencies
 The python library <i><a href="https://github.com/danthedeckie/simpleeval" >simpleeval</a></i> is required to be installed if you wish to use the **Simpleeval Nodes**.
 <pre>pip install simpleeval</pre>
