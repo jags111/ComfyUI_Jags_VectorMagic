@@ -1,12 +1,15 @@
-import os, shutil
-import folder_paths
+import os
+import subprocess
+import importlib.util
+import sys
 
+python = sys.executable
 module_js_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "js")
 application_root_directory = os.path.dirname(folder_paths.__file__)
 application_web_extensions_directory = os.path.join(application_root_directory, "web", "extensions", "ComfyUI_jags_Vectormagic")
 
 shutil.copytree(module_js_directory, application_web_extensions_directory, dirs_exist_ok=True)
-
+# call classes used
 from .simple_source_file import SIMPLE_CUSTOM_NODE
 try:
     from custom_nodes.ComfyUI_jags_Vectormagic import CC_VERSION
