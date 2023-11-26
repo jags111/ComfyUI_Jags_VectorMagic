@@ -27,13 +27,17 @@ except:
 # Note: Name: Unique to all node classes
 # NODE_CLASS_MAPPINGS = { "my unique name" : SimpleCustomNode }
 NODE_CLASS_MAPPINGS = {
-    "xxx":xxx
+    "xy_Tiling_KSampler": xy_KSampler
 }
 
 #Main titles
+# Asymmetric tiling script for ComfyUI
+#
+# This script allows seamless tiling to be enabled separately for the X and Y axes.
+
 #NODE_DISPLAY_NAME_MAPPINGS = { "my unique name" : "Image inverter" }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "xxx": "xxxx #Example Node"
+    "xy_Tiling_KSampler": "This script allows seamless tiling to be enabled separately for the X and Y axes."
     
 }
 CC_VERSION = 1.0
@@ -49,5 +53,6 @@ print('\ComfyUI_Jags_VectorMagic- nodes_loaded')
 print('--------------')
 #__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS']
 __ALL__ = [NODE_CLASS_MAPPINGS, CC_VERSION]
+
 
 
