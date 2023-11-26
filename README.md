@@ -59,8 +59,8 @@ Support us in Patreon for more future models and new versions of AI notebooks.
 
 Thank you for being awesome!
 
-<img src = "images/ComfyUI_temp_vpose_00005_.png" width = "50%"> 
 
+<img src = "images/00_01_00009_.png"  width = "50%">
 
 <!-- end support-pitch -->
 
