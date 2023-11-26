@@ -8,11 +8,12 @@ Thanks for your support
 <img src = "images/00_01_00005_.png"  width = "50%">
 
 ### Nodes
-
+# x-y tiling K sampler and circular VAE modes for tileable images
+<img src = "images/2023-11-26_17-48-59.png"  width = "50%" >
 
 ### Example Work flow
-
-
+# x-y tiling K sampler and circular VAE modes for tileable images- workflow using SDXL
+<img src = "images/2023-11-26_17-48-59.png"  width = "50%" >
 
 ### Dependencies
 The python library <i><a href="https://github.com/danthedeckie/simpleeval" >simpleeval</a></i> is required to be installed if you wish to use the **Simpleeval Nodes**.
