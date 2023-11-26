@@ -1,8 +1,8 @@
 # ComfyUI_Jags_VectorMagic
-a collection of nodes to explore Vector and image manipulation
+#a collection of nodes to explore Vector and image manipulation
 
-Please note the work in this repo is not completed and still in progress and code will break until all things are sorted. Please wait as will announce same in the update here.
-Thanks for your support
+✨🍬Please note the work in this repo is not completed and still in progress and code will break until all things are sorted. Please wait as will announce same in the update here.
+Thanks for your support. Also note for any issues on the nodes, kindly share your workflow and alos always update comfyUI base including all dependencies.✨🍬
 
 
 <img src = "images/00_01_00005_.png"  width = "50%">
