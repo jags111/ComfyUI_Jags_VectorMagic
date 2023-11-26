@@ -16,19 +16,37 @@ try:
     if CC_VERSION < 1:                                    # specify the minimum version you need as a float
         raise Exception()
 except: 
-    print("ComfyUI_jags_Vectormagic 1.0 not found - will try to install - you may need to restart afterwards")
+    print("ComfyUI_Jags_VectorMagic 1.0 not found - will try to install - you may need to restart afterwards")
     from .install import installer
     import os
     import folder_paths
     application_root_directory = os.path.dirname(folder_paths.__file__)
     installer(os.path.join(application_root_directory,"custom_nodes"))
 
+# Node Names from the beginning
+# Note: Name: Unique to all node classes
 # NODE_CLASS_MAPPINGS = { "my unique name" : SimpleCustomNode }
-NODE_CLASS_MAPPINGS = {}
-#NODE_DISPLAY_NAME_MAPPINGS = { "my unique name" : "Image inverter" }
+NODE_CLASS_MAPPINGS = {
+    "xxx":xxx
+}
 
+#Main titles
+#NODE_DISPLAY_NAME_MAPPINGS = { "my unique name" : "Image inverter" }
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "xxx": "xxxx #Example Node"
+    
+}
 CC_VERSION = 1.0
 
+
+# web ui feature
+WEB_DIRECTORY = "./js"
+
+#print confirmation
+
+print('--------------')
+print('\ComfyUI_Jags_VectorMagic- nodes_loaded')
+print('--------------')
 #__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS']
 __ALL__ = [NODE_CLASS_MAPPINGS, CC_VERSION]
 
