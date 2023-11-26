@@ -18,7 +18,7 @@ A single file library for easily adding evaluatable expressions into python proj
 check Notes for more information.
 
 ## **Install:**
-To install, drop the "_**efficiency-nodes-comfyui**_" folder into the "_**...\ComfyUI\ComfyUI\custom_nodes**_" directory and restart UI.
+To install, drop the "_**ComfyUI_Jags_VectorMagic**_" folder into the "_**...\ComfyUI\ComfyUI\custom_nodes**_" directory and restart UI.
 
 ## Todo
 
@@ -27,7 +27,7 @@ To install, drop the "_**efficiency-nodes-comfyui**_" folder into the "_**...\Co
 
 # Comfy Resources
 
-**Efficiency Linked Repos**
+**ComfyUI_Jags_VectorMagic Linked Repos**
 - [BlenderNeko ComfyUI_ADV_CLIP_emb](https://github.com/BlenderNeko/ComfyUI_ADV_CLIP_emb)  by@BlenderNeko
 - [Chrisgoringe cg-noise](https://github.com/chrisgoringe/cg-noise)  by@Chrisgoringe
 - [pythongosssss ComfyUI-Custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts)  by@pythongosssss
