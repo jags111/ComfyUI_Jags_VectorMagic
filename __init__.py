@@ -40,10 +40,10 @@ WEB_DIRECTORY = "js"
 #print confirmation
 
 print('--------------')
-print('\ComfyUI_Jags_VectorMagic- nodes_loaded')
+print('*ComfyUI_Jags_VectorMagic- nodes_loaded*')
 print('--------------')
 #__all__ = ['NODE_CLASS_MAPPINGS', 'NODE_DISPLAY_NAME_MAPPINGS']
-__ALL__ = [NODE_CLASS_MAPPINGS, CC_VERSION]
+__ALL__ = [NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS, CC_VERSION]
 
 
 
