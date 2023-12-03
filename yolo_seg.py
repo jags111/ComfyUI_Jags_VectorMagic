@@ -70,7 +70,7 @@ class YoloSegNode:
         }
 
     RETURN_TYPES = ("IMAGE", "MASK",)
-    RETURN_NAMES = ("SEG_MASK", "SEG_IMAGE",)
+    RETURN_NAMES = ("SEG_IMAGE", "SEG_MASK",)
     FUNCTION = "seg"
     CATEGORY = "Jags_vector/yoloSEG"
 
