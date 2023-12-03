@@ -32,9 +32,16 @@ A single file library for easily adding evaluatable expressions into python proj
 check Notes for more information.
 
 ## **Install:**
-To install, drop the "_**ComfyUI_Jags_VectorMagic**_" folder into the "_**...\ComfyUI\ComfyUI\custom_nodes**_" directory and restart UI.<br>
-
+To install, drop the "_**ComfyUI_Jags_VectorMagic**_" folder into the "_**...\ComfyUI\custom_nodes**_" directory and restart UI.<br>
+Ensure all the requirements.txt dependencies are met.<br>
 But the best method is to install same from ComfyUI Manager (https://github.com/ltdrdata/ComfyUI-Manager) and search for this name in the Node list and install from there and restart the UI as it takes care of all the dependencies and installs and make it easy for you. 
+
+Put all Seg models in comfyUI/models/Yolov8<br>
+DOwnload Yolov8 seg detector and other collections from the following resources;<br>
+
+*Ultralytics Detection models :* <a href = "https://docs.ultralytics.com/tasks/detect/"> *YOLOv8n, YOLOv8s,YOLOv8m,YOLOv8l,YOLOv8x* </a><br>
+
+*Ultralytics Segmentation models :* <a href = "https://docs.ultralytics.com/tasks/segment/">  *YOLOv8n-seg, YOLOv8s-seg, YOLOv8m-seg, YOLOv8l-seg, YOLOv8x-seg*   </a> </br>
 
 ## Todo
 
