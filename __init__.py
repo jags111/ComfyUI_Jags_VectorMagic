@@ -1,17 +1,25 @@
-import os
-import subprocess
-import importlib.util
-import sys
+# only import if running as a custom node
+"""
+@author: jags111
+@title: Jags_VectorMagic
+@nickname: Jags_VectorMagic
+@description: This extension offers various vector manipulation and  generation tools
+"""
+import sys, os, shutil
+import importlib
+import traceback
+import json
 
-python = sys.executable
-module_js_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "js")
-application_root_directory = os.path.dirname(__file__)
-application_web_extensions_directory = os.path.join(application_root_directory, "web", "extensions")
+import folder_paths
+
+custom_nodes_path = os.path.join(folder_paths.base_path, "custom_nodes")
+ComfyUI_Jags_VectorMagic_path = os.path.join(custom_nodes_path, "ComfyUI_Jags_VectorMagic")
+sys.path.append(ComfyUI_Jags_VectorMagic_path)
 
 #shutil.copytree(module_js_directory, application_web_extensions_directory, dirs_exist_ok=True)
 # call classes used
-from .base import xy_Tiling_KSampler
-from .base import CircularVAEDecode
+from .base import *
+
 
 # Node Names from the beginning
 # Note: Name: Unique to all node classes
@@ -22,17 +30,21 @@ NODE_CLASS_MAPPINGS = {
 }
 
 #Main titles
-# Asymmetric tiling script for ComfyUI
-#
-# This script allows seamless tiling to be enabled separately for the X and Y axes.
 
-#NODE_DISPLAY_NAME_MAPPINGS = { "my unique name" : "Image inverter" }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "xy_Tiling_KSampler": "Jags-XY_tile sampler",
     "CircularVAEDecode": "Jags-CircularVAEDecode",
 }
 CC_VERSION = 1.0
 
+THIS_DIR=os.path.dirname(os.path.abspath(__file__))
+DIR_DEV_JS=os.path.abspath(f'{THIS_DIR}/js')
+DIR_PY=os.path.abspath(f'{THIS_DIR}/py')
+DIR_WEB_JS=os.path.abspath(f'{THIS_DIR}/../../web/extensions/comfyui_jags_Vectormagic')
+if not os.path.exists(DIR_WEB_JS):
+    os.makedirs(DIR_WEB_JS)
+
+shutil.copytree(DIR_DEV_JS, DIR_WEB_JS, dirs_exist_ok=True)
 
 # web ui feature
 WEB_DIRECTORY = "js"
