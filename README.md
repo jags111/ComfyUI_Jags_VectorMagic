@@ -43,6 +43,10 @@ DOwnload Yolov8 seg detector and other collections from the following resources;
 
 *Ultralytics Segmentation models :* <a href = "https://docs.ultralytics.com/tasks/segment/">  *YOLOv8n-seg, YOLOv8s-seg, YOLOv8m-seg, YOLOv8l-seg, YOLOv8x-seg*   </a> </br>
 
+*Ultralytics Pose models :* Also available incase you want to explore : <a href = "(https://docs.ultralytics.com/tasks/pose/)"> POSE MODELS (yolov8n-pose.pt yolov8s-pose.pt yolov8m-pose.pt yolov8l-pose.pt yolov8x-pose.pt yolov8x-pose-p6.pt) </a> </br>
+
+* Face detection models - download from this git repo <a href = "https://github.com/akanametov/yolov8-face" >  Face segmentation models </a> </br>
+
 ## Todo
 
 [ ] Add guidance to notebook
