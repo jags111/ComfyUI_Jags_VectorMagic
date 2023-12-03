@@ -6,3 +6,5 @@ color-matcher
 matplotlib
 clip-interrogator
 simpleeval
+ultralytics
+ultralyticsplus
