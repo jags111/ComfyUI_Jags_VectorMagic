@@ -19,7 +19,7 @@ sys.path.append(ComfyUI_Jags_VectorMagic_path)
 #shutil.copytree(module_js_directory, application_web_extensions_directory, dirs_exist_ok=True)
 # call classes used
 from .base import *
-
+from .yolo_seg import *
 
 # Node Names from the beginning
 # Note: Name: Unique to all node classes
@@ -27,6 +27,8 @@ from .base import *
 NODE_CLASS_MAPPINGS = {
     "xy_Tiling_KSampler": xy_Tiling_KSampler,
     "CircularVAEDecode": CircularVAEDecode,
+    "YoloSEGdetectionNode": YoloSEGdetectionNode,
+    "YoloSegNode": YoloSegNode
 }
 
 #Main titles
@@ -34,6 +36,8 @@ NODE_CLASS_MAPPINGS = {
 NODE_DISPLAY_NAME_MAPPINGS = {
     "xy_Tiling_KSampler": "Jags-XY_tile sampler",
     "CircularVAEDecode": "Jags-CircularVAEDecode",
+    "YoloSEGdetectionNode": 'Jags-YoloSEGdetectionNode',
+    "YoloSegNode": 'Jags-YoloSegNode' 
 }
 CC_VERSION = 1.0
 
