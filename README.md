@@ -12,6 +12,7 @@ Thanks for your support. Also note for any issues on the nodes, kindly share you
 <img src = "images/2023-11-26_17-48-59.png"  width = "50%" >
 
 # Segmentation using Ultralytics Yolov8 models and creating masks with same
+<img src = "images/2023-12-03_23-10-27.png"  width = "50%" >
 
 
 ### Example Work flow
