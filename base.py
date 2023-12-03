@@ -56,7 +56,7 @@ class SeedContext():
 
 # import comfy.model_base as BaseModel
 
-
+#  Node groups------------------------------
 class xy_Tiling_KSampler:
     def __init__(self):
         pass
@@ -86,7 +86,7 @@ class xy_Tiling_KSampler:
     RETURN_NAMES = ("latent", "progress_latent")
     FUNCTION = "sample"
 
-    CATEGORY = "Tiled/Sampling"
+    CATEGORY = "Jags_vector/xy_tile_sampler"
 
     def apply_asymmetric_tiling(self, model, tileX, tileY):
         for layer in [layer for layer in model.modules() if isinstance(layer, torch.nn.Conv2d)]:
@@ -152,7 +152,7 @@ class CircularVAEDecode:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "decode"
 
-    CATEGORY = "latent"
+    CATEGORY = "Jags_vector/latent"
 
     def decode(self, vae, samples):
         for layer in [layer for layer in vae.first_stage_model.modules() if isinstance(layer, torch.nn.Conv2d)]:
@@ -161,7 +161,11 @@ class CircularVAEDecode:
     
 NODE_CLASS_MAPPINGS = {
         "xy_Tiling_KSampler": xy_Tiling_KSampler,
-        "CircularVAEDecode": CircularVAEDecode,
+        "CircularVAEDecode": CircularVAEDecode
+}
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "xy_Tiling_KSampler": 'Jags-XY_tile sampler',
+    "CircularVAEDecode": 'Jags-CircularVAEDecode'
 }
 
     
