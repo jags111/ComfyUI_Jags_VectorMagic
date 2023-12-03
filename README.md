@@ -12,9 +12,11 @@ Thanks for your support. Also note for any issues on the nodes, kindly share you
 <img src = "images/2023-11-26_17-48-59.png"  width = "50%" >
 
 # Segmentation using Ultralytics Yolov8 models and creating masks with same
-<img src = "images/2023-12-03_23-10-27.png"  width = "50%" >
+<img src = "images/2023-12-03_23-10-27.png"  width = "50%" > </br>
 
+<img src = "images/2023-12-03_23-02-42.png"  width = "50%" > </br>
 
+You can see more examples of the workflow and proper selection of models for each type of segmentation masks in the <a href = "https://github.com/jags111/ComfyUI_Jags_VectorMagic/wiki">*VECTOR MAGIC WIKI* </a></br>
 ### Example Work flow
 # x-y tiling K sampler and circular VAE modes for tileable images- workflow using SDXL
 <img src = "images/JagsvectorworkSDXL_tiledsampler_explore001.png"  width = "50%" ><br>
