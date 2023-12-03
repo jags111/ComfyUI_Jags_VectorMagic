@@ -11,6 +11,9 @@ Thanks for your support. Also note for any issues on the nodes, kindly share you
 # x-y tiling K sampler and circular VAE modes for tileable images
 <img src = "images/2023-11-26_17-48-59.png"  width = "50%" >
 
+# Segmentation using Ultralytics Yolov8 models and creating masks with same
+
+
 ### Example Work flow
 # x-y tiling K sampler and circular VAE modes for tileable images- workflow using SDXL
 <img src = "images/JagsvectorworkSDXL_tiledsampler_explore001.png"  width = "50%" ><br>
