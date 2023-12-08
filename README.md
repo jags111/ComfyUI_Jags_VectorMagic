@@ -40,6 +40,7 @@ The CLIPSeg node generates a binary mask for a given input image and text prompt
 
 ### JagsCombineSegMasks
 The CombineSegMasks node combines two or optionally three masks into a single mask to improve masking of different areas.
+<img src = "images/2023-12-08_17-34-47.png"  width = "50%" > </br> 
 
 **Inputs:**
 
