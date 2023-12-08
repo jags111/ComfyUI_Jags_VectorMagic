@@ -237,7 +237,7 @@ class JagsCombineMasks:
         if mask_3 is not None:
             mask_3 = mask_3.squeeze()
         
-        print(mask_1.shape,mask_2.shape , mask_3.shape)
+        # print(mask_1.shape,mask_2.shape , mask_3.shape)
         combined_mask = mask_1 + mask_2 + mask_3 if mask_3 is not None else mask_1 + mask_2
         # print(combined_mask)
 
