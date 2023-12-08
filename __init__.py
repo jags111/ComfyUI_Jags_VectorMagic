@@ -21,6 +21,7 @@ sys.path.append(ComfyUI_Jags_VectorMagic_path)
 from .base import *
 from .yolo_seg import *
 from .SVG_convert import *
+from JagsClipseg import *
 
 
 # Node Names from the beginning
@@ -33,6 +34,8 @@ NODE_CLASS_MAPPINGS = {
     "YoloSegNode": YoloSegNode,
     "color_drop": color_drop,
     #"SVG": SVG,
+    "JagsClipseg": JagsCLIPSeg,
+    "JagsCombineMasks": JagsCombineMasks,
 
 }
 
@@ -45,6 +48,8 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "YoloSegNode": 'Jags-YoloSegNode',
     "color_drop": "Jags-color_drop",
     #"SVG": "Jags-SVG",
+    "JagsClipseg": "Jags-Clipseg",
+    "JagsCombineMasks": "Jags-CombineMasks",
 }
 CC_VERSION = 1.0
 
