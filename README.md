@@ -22,6 +22,7 @@ You can see more examples of the workflow and proper selection of models for eac
 CLIPSeg adds a minimal decoder on top of a frozen CLIP model for zero- and one-shot image segmentation.
 The CLIPSeg node generates a binary mask for a given input image and text prompt.
 <img src = "images/2023-12-08_14-59-13.png"  width = "50%" > </br> 
+<img src = "images/2023-12-08_15-02-32.png"  width = "50%" > </br> 
 
 **Inputs:**
 
