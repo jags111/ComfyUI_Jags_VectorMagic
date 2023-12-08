@@ -17,6 +17,42 @@ Thanks for your support. Also note for any issues on the nodes, kindly share you
 <img src = "images/2023-12-03_23-02-42.png"  width = "50%" > </br>
 
 You can see more examples of the workflow and proper selection of models for each type of segmentation masks in the <a href = "https://github.com/jags111/ComfyUI_Jags_VectorMagic/wiki">*VECTOR MAGIC WIKI* </a></br>
+
+# Jags-Clipseg Nodes
+CLIPSeg adds a minimal decoder on top of a frozen CLIP model for zero- and one-shot image segmentation.
+The CLIPSeg node generates a binary mask for a given input image and text prompt.
+
+**Inputs:**
+
+- image: A torch.Tensor representing the input image.
+- text: A string representing the text prompt.
+- blur: A float value to control the amount of Gaussian blur applied to the mask.
+- threshold: A float value to control the threshold for creating the binary mask.
+- dilation_factor: A float value to control the dilation of the binary mask.
+
+**Outputs:**
+
+- tensor_bw: A torch.Tensor representing the binary mask.
+- image_out_hm: A torch.Tensor representing the heatmap overlay on the input image.
+- image_out_bw: A torch.Tensor representing the binary mask overlay on the input image.
+
+### JagsCombineSegMasks
+The CombineSegMasks node combines two or optionally three masks into a single mask to improve masking of different areas.
+
+**Inputs:**
+
+- image: A torch.Tensor representing the input image.
+- mask1: A torch.Tensor representing the first mask.
+- mask2: A torch.Tensor representing the second mask.
+- mask3 (optional): A torch.Tensor representing the third mask. Defaults to None.
+
+**Outputs:**
+
+- combined_mask: A torch.Tensor representing the combined mask.
+- image_out_hm: A torch.Tensor representing the heatmap overlay of the combined mask on the input image.
+- image_out_bw: A torch.Tensor representing the binary mask overlay of the combined mask on the input image.
+
+
 ### Example Work flow
 # x-y tiling K sampler and circular VAE modes for tileable images- workflow using SDXL
 <img src = "images/JagsvectorworkSDXL_tiledsampler_explore001.png"  width = "50%" ><br>
@@ -28,7 +64,7 @@ You can see more examples of the workflow and proper selection of models for eac
 Link to the workflow and explanations : <a href= "https://github.com/jags111/ComfyUI_Jags_VectorMagic/wiki"> **WIKI** </a>
 
 ### Dependencies
-The python library <i><a href="https://github.com/danthedeckie/simpleeval" >simpleeval</a></i> is required to be installed if you wish to use the **Simpleeval Nodes**.
+The python library <i><a href="https://github.com/danthedeckie/simpleeval" >simpleeval</a></i> is required to be installed if you wish to use the **expression Nodes**.
 <pre>pip install simpleeval</pre>
 Also can be installed with a simple pip command <br>
 'pip install simpleeval'
@@ -73,7 +109,8 @@ Download  <a href = "https://huggingface.co/CIDAS/clipseg-rd64-refined/tree/main
 - [LEv145_images-grid-comfyUI-plugin](https://github.com/LEv145/images-grid-comfy-plugin))  by@LEv145
 - [ltdrdata-ComfyUI-Inspire-Pack](https://github.com/ltdrdata/ComfyUI-Inspire-Pack) by@ltdrdata
 - [pythongosssss-ComfyUI-custom-Scripts](https://github.com/pythongosssss/ComfyUI-Custom-Scripts) by@pythongosssss
-- [RockOfFire-ComfyUI_Comfyroll_CustomNodes](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes) by@RockOfFire 
+- [RockOfFire-ComfyUI_Comfyroll_CustomNodes](https://github.com/RockOfFire/ComfyUI_Comfyroll_CustomNodes) by@RockOfFire
+- [biegert-ComfyUI-CLIPSeg](https://github.com/biegert/ComfyUI-CLIPSeg) by@biegert 
 
 **Guides**:
 - [Official Examples (eng)](https://comfyanonymous.github.io/ComfyUI_examples/)- 
