@@ -53,6 +53,11 @@ DOwnload Yolov8 seg detector and other collections from the following resources;
 
 * Face detection models - download from this git repo <a href = "https://github.com/akanametov/yolov8-face" >  Face segmentation models </a> </br>
 
+**Installing Clipseg models** <br>
+ComfyUI node for  the <a href = "https://huggingface.co/docs/transformers/main/en/model_doc/clipseg" > [CLIPSeg model] </a> to generate masks for image inpainting tasks based on text prompts.<br>
+
+
+
 ## Todo
 
 [ ] Add guidance to notebook
