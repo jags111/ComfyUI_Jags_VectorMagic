@@ -55,7 +55,7 @@ DOwnload Yolov8 seg detector and other collections from the following resources;
 
 **Installing Clipseg models** <br>
 ComfyUI node for  the <a href = "https://huggingface.co/docs/transformers/main/en/model_doc/clipseg" > [CLIPSeg model] </a> to generate masks for image inpainting tasks based on text prompts.<br>
-
+Download  <a href = "https://huggingface.co/CIDAS/clipseg-rd64-refined/tree/main"> *clipseg model* </a> and place it in [comfy\models\clipseg] directory for the node to work
 
 
 ## Todo
