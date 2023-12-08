@@ -36,10 +36,12 @@ The CLIPSeg node generates a binary mask for a given input image and text prompt
 
 - tensor_bw: A torch.Tensor representing the binary mask.
 - image_out_hm: A torch.Tensor representing the heatmap overlay on the input image.
-- image_out_bw: A torch.Tensor representing the binary mask overlay on the input image.
+- image_out_bw: A torch.Tensor representing the binary mask overlay on the input image.<br>
 
 ### JagsCombineSegMasks
-The CombineSegMasks node combines two or optionally three masks into a single mask to improve masking of different areas.
+
+The CombineSegMasks node combines two or optionally three masks into a single mask to improve masking of different areas.<br>
+
 <img src = "images/2023-12-08_17-34-47.png"  width = "50%" > </br> 
 
 **Inputs:**
