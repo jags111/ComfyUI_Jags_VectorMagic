@@ -93,7 +93,7 @@ Download Yolov8 seg detector and other collections from the following resources;
 
 *Ultralytics Pose models :* Also available incase you want to explore : <a href = "(https://docs.ultralytics.com/tasks/pose/)"> POSE MODELS (yolov8n-pose.pt yolov8s-pose.pt yolov8m-pose.pt yolov8l-pose.pt yolov8x-pose.pt yolov8x-pose-p6.pt) </a> Please note teh pose modesl need a seperate type of node to work and cannot be deployed in normal segmentaion mask node. </br>
 
-* Face detection models - download from this git repo <a href = "https://github.com/akanametov/yolov8-face" >  Face segmentation models </a> </br>
+* Face detection models - download from my huggingface repo <a href = "https://huggingface.co/jags/yolov8_model_segmentation-set"> *YOLOv8 model collections* </a> </br>
 
 **Installing Clipseg models** <br>
 ComfyUI node for  the <a href = "https://huggingface.co/docs/transformers/main/en/model_doc/clipseg" > [CLIPSeg model] </a> to generate masks for image inpainting tasks based on text prompts.<br>
