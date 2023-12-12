@@ -85,7 +85,7 @@ Ensure all the requirements.txt dependencies are met.<br>
 But the best method is to install same from ComfyUI Manager (https://github.com/ltdrdata/ComfyUI-Manager) and search for this name in the Node list and install from there and restart the UI as it takes care of all the dependencies and installs and make it easy for you. 
 
 Put all Seg models in comfyUI/models/Yolov8<br>
-DOwnload Yolov8 seg detector and other collections from the following resources;<br>
+Download Yolov8 seg detector and other collections from the following resources;* <a href = "https://huggingface.co/jags/yolov8_model_segmentation-set"> *YOLOv8 model collections* </a><br>
 
 *Ultralytics Detection models :* <a href = "https://docs.ultralytics.com/tasks/detect/"> *YOLOv8n* </a><br>
 
