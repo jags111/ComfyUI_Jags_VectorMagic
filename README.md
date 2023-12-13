@@ -69,6 +69,10 @@ The CombineSegMasks node combines two or optionally three masks into a single ma
 
 Link to the workflow and explanations : <a href= "https://github.com/jags111/ComfyUI_Jags_VectorMagic/wiki"> **WIKI** </a>
 
+Many thanks  for a wonderful flower segmentation pipeline from <a href= "https://github.com/mendez-luisjose/Flower-Instance-Segmentation-Model"> Flower-Instance-Segmentation</a> which is now added to the Yolov8 models repo for exploration. <br>
+
+
+
 ### Dependencies
 The python library <i><a href="https://github.com/danthedeckie/simpleeval" >simpleeval</a></i> is required to be installed if you wish to use the **expression Nodes**.
 <pre>pip install simpleeval</pre>
