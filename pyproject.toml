@@ -1,0 +1,15 @@
+[project]
+name = "comfyui_jags_vectormagic"
+description = ""
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["librosa", "numpy", "Pillow", "scipy", "color-matcher", "matplotlib", "clip-interrogator", "simpleeval", "ultralytics", "ultralyticsplus", "CLIPSeg", "OpenCV"]
+
+[project.urls]
+Repository = "https://github.com/jags111/ComfyUI_Jags_VectorMagic"
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI_Jags_VectorMagic"
+Icon = ""
+Models = [{location = "/checkpoints/model.safetensor", model_url = "https://example.com/model.zip"}]
