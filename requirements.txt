@@ -9,4 +9,4 @@ simpleeval
 ultralytics
 ultralyticsplus
 CLIPSeg
-OpenCV
+opencv-python
