@@ -1,7 +1,7 @@
 [project]
 name = "comfyui_jags_vectormagic"
 description = "ComfyUI_Jags_VectorMagic  A collection of nodes to explore Vector and image manipulation"
-version = "1.0.2"
+version = "1.0.3"
 license = { file = "LICENSE" }
 dependencies = ["librosa", "numpy", "Pillow", "scipy", "color-matcher", "matplotlib", "clip-interrogator", "simpleeval", "ultralytics", "ultralyticsplus", "CLIPSeg", "OpenCV"]
 
