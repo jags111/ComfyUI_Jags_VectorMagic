@@ -8,4 +8,4 @@ clip-interrogator
 simpleeval
 ultralytics
 ultralyticsplus
-OpenCV
+opencv-python
