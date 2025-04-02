@@ -21,7 +21,7 @@ sys.path.append(ComfyUI_Jags_VectorMagic_path)
 from .base import *
 from .yolo_seg import *
 from .SVG_convert import *
-from JagsClipseg import *
+from .JagsClipseg import *
 
 
 # Node Names from the beginning
